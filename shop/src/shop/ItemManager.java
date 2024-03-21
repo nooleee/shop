@@ -6,6 +6,7 @@ public class ItemManager {
 	private Vector<Item> list;
 	
 	public ItemManager() {
+		list = new Vector<>();
 		list.add(new Item("사과", list.size()));
 		list.add(new Item("바나나", list.size()));
 		list.add(new Item("딸기", list.size()));
