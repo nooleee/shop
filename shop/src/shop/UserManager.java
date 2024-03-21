@@ -8,6 +8,7 @@ public class UserManager {
 	private Vector<User> list;
 	
 	public UserManager() {
+		list = new Vector<>();
 		list.add(new User("admin","1234", 123));
 	}
 	
