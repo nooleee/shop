@@ -17,10 +17,19 @@ public class Shop {
 		System.out.println(status);
 	}
 	
+	private void showMenus() {
+		System.out.println("------------");
+		System.out.println("1. 유저");
+		System.out.println("2. 관리자");
+		System.out.println("3. 파일");
+		System.out.println("0. 종료");
+		System.out.println("------------");
+	}
+	
 	public void run() {
 		while(isRun) {
 			printStatus();
-			break;
+			showMenus();
 		}
 	}
 }
