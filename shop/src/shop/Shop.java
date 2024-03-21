@@ -49,9 +49,24 @@ public class Shop {
 		return number;
 	}
 	
+	private void showSubUserMenu() {
+		System.out.println("------------");
+		System.out.println("1. 회원가입");
+		System.out.println("2. 회원탈퇴");
+		System.out.println("3. 로그인");
+		System.out.println("4. 로그아웃");
+		System.out.println("5. 쇼핑하기");
+		System.out.println("6. 마이페이지");
+		System.out.println("0. 뒤로가기");
+		System.out.println("------------");
+	}
+	
 	private void runMenu(int select) {
 		switch (select) {
 		case USER:
+			showSubUserMenu();
+			int sel = inputNumber("선택");
+			
 		case ADMIN:
 		case FILE:
 		case EXIT:
