@@ -90,15 +90,19 @@ public class Cart {
 		System.out.println();
 	}
 	
-//	// 장바구니 아이템 개수
-//	public int cartItemCount() {
-//		int cnt = 0;
-//		for(Item item : list) {
-//			if(item.getCode() == cnt) 
-//				cnt++;
-//		}
-//		return cnt;
-//	}
+	// 장바구니 리셋
+	public void resetCart() {
+		list.removeAllElements();
+	}
+	
+	// 장바구니 리스트 확인
+	public Vector<Item> findCartAll() {
+		Vector<Item> copy = new Vector<>();
+		for(Item item : list) {
+			copy.add(item.clone());
+		}
+		return copy;
+	}
 	
 	public int cartSize() {
 		return list.size();
