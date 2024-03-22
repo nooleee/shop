@@ -190,14 +190,27 @@ public class Shop {
 		user.getCart().printCartAll(items);
 	}
 	
+	private void deleteItem() {
+		Cart cart = UserManager.getUserByUserCode(log).getCart();
+		printItemAll();
+		int code = inputNumber("선택")-1;
+		
+		if(code < 0 || code > ItemManager.getItemSize()) {
+			System.err.println("아이템 번호를 다시 확인해주세요.");
+			return;
+		}
+		
+		cart.deleteItem(code);
+	}
+	
 	private void runMypageSubMenu(int choice) {
 		if(choice < 0 || choice > 4)
 			return;
 		
 		if(choice == VIEW_CART)
 			viewCart();
-//		else if(choice == DELETE_ITEM)
-//			deleteItem();
+		else if(choice == DELETE_ITEM)
+			deleteItem();
 //		else if(choice == MODIFY_ITEM)
 //			modifyItemCount();
 //		else if(choice == DELETE_ITEM)
