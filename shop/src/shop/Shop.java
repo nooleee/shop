@@ -98,9 +98,14 @@ public class Shop {
 	
 	private void leave() {
 		String password = inputString("비밀번호 확인");
-		if(UserManager.findUserByPassword(password)) {
-			
+		int code = UserManager.findUserByPassword(password);
+		if(code != 0) {
+			User user = UserManager.getUserByUserCode(code);
+			UserManager.deleteUser(user);
+			System.out.println("회원 탈퇴 완료");
 		}
+		else
+			System.err.println("비밀번호를 다시 확인하세요.");
 	}
 	
 	private void runSubUserMenu(int sel) {
