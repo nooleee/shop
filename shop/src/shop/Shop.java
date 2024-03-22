@@ -203,6 +203,38 @@ public class Shop {
 		cart.deleteItem(code);
 	}
 	
+	private void modifyItemCount() {
+		showModifySubMenu();
+		int sel = inputNumber("선택");
+		runModifySubMenu(sel);
+	}
+	
+	private void runModifySubMenu(int sel) {
+		if(sel < 1 || sel > 2)
+			return;
+		
+		if(sel == 1)
+			plus();
+//		else if(sel == 2)
+//			minus();
+	}
+	
+	private void plus() {
+		User user = UserManager.getUserByUserCode(log);
+		
+		printItemAll();
+		int code = inputNumber("원하는 항목")-1;
+		String name = ItemManager.getItemName(code);
+		int count = inputNumber("원하는 수량");
+		
+		user.getCart().plusItemCount(count, name);
+	}
+	
+	private void showModifySubMenu() {
+		System.out.println("1)추가");
+		System.out.println("2)삭제");
+	}
+	
 	private void runMypageSubMenu(int choice) {
 		if(choice < 0 || choice > 4)
 			return;
@@ -211,8 +243,8 @@ public class Shop {
 			viewCart();
 		else if(choice == DELETE_ITEM)
 			deleteItem();
-//		else if(choice == MODIFY_ITEM)
-//			modifyItemCount();
+		else if(choice == MODIFY_ITEM)
+			modifyItemCount();
 //		else if(choice == DELETE_ITEM)
 //		else if(choice == BACK)
 //			return;
