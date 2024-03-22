@@ -84,7 +84,7 @@ public class ItemManager {
 	}
 	
 	// 아이템 수정
-	public void replaceItem(String name, String newItem) {
+	public void replaceItem(String name, int price) {
 		int index = getItemIndex(name);
 		
 		if(index == -1) {
@@ -92,7 +92,7 @@ public class ItemManager {
 			return;
 		}
 		
-		Item item = new Item(newItem, index);
+		Item item = new Item(name, index, price);
 		list.set(index, item);
 	}
 	

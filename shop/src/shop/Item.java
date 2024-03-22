@@ -34,6 +34,6 @@ public class Item {
 	
 	
 	public Item clone() {
-		return new Item(this.name, this.code);
+		return new Item(this.name, this.code, this.price);
 	}
 }

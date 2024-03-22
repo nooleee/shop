@@ -163,7 +163,7 @@ public class Shop {
 	
 	private void printItemAll() {
 		for(Item item : ItemManager.findItemAll()) {
-			System.out.printf("%d) %s\n", item.getCode() + 1, item.getName());
+			System.out.printf("%d) %s (%d원)\n", item.getCode() + 1, item.getName(), item.getPrice());
 		}
 	}
 	
@@ -258,7 +258,30 @@ public class Shop {
 	}
 	
 	private void payMent() {
+		Vector<Item> items = ItemManager.findItemAll();
+		int total = getTotal(items);
 		
+		System.out.println("==== 영수증 ====");
+		viewCart();
+		System.out.printf("결제 금액 : %d원", total);
+		System.out.println("[결제 완료]");
+		
+		Cart cart = UserManager.getUserByUserCode(log).getCart();
+		cart.resetCart();
+	}
+	
+	private int getTotal(Vector<Item> items) {
+		int total = 0;
+		Cart cart = UserManager.getUserByUserCode(log).getCart();
+		for(int i = 0; i < items.size(); i++) {
+			Item target = items.get(i);
+			int price = target.getPrice();
+			for(Item item : cart.findCartAll()) {
+				if(item.getCode() == target.getCode())
+					total += price;
+			}
+		}
+		return total;
 	}
 	
 	private void runMypageSubMenu(int choice) {
