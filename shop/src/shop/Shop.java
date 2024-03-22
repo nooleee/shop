@@ -69,16 +69,16 @@ public class Shop {
 		System.out.println("------------");
 	}
 	
-	private void join() {
-		
-	}
+//	private void join() {
+//		
+//	}
 	
 	private void runSubUserMenu(int sel) {
 		if(sel < 0 || sel > 6)
 			return;
 		
 		if(sel == JOIN)
-			join();
+//			join();
 //		else if(sel == LEAVE)
 //			leave();
 //		else if(sel == LOGIN)
