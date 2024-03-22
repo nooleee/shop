@@ -11,6 +11,7 @@ public class Shop {
 	private boolean isRun;
 	
 	private int log;
+	private final int ADMINCODE = 123;
 	
 	private final int USER = 1;
 	private final int ADMIN = 2;
@@ -268,6 +269,8 @@ public class Shop {
 		
 		Cart cart = UserManager.getUserByUserCode(log).getCart();
 		cart.resetCart();
+		User admin = UserManager.getUserByUserCode(ADMINCODE);
+		admin.setTotal(total);
 	}
 	
 	private int getTotal(Vector<Item> items) {
@@ -320,6 +323,17 @@ public class Shop {
 			return;
 	}
 	
+	private boolean checkAdminCode() {
+		boolean isAdmin = false;
+		if(log == ADMINCODE)
+			return isAdmin = true;
+		
+		if(!isAdmin)
+			System.out.println("관리자 계정이 아닙니다.");
+		
+		return isAdmin;
+	}
+	
 	private void runMenu(int select) {
 		switch (select) {
 		case USER:
@@ -328,6 +342,10 @@ public class Shop {
 			runSubUserMenu(sel);
 			break;
 		case ADMIN:
+			if(!checkLog() && checkAdminCode()) {
+//				showAdminMenu();
+			}
+			break;
 		case FILE:
 		case EXIT:
 			isRun = false;
