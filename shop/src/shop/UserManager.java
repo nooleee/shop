@@ -1,5 +1,6 @@
 package shop;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Vector;
 
@@ -72,6 +73,15 @@ public class UserManager {
 				return user;
 		}
 		return new User();
+	}
+	
+	// 유저 리스트 확인
+	public ArrayList<User> findUserAll() {
+		ArrayList<User> copy = new ArrayList<>();
+		for(User user : list) {
+			copy.add(user.clone());
+		}
+		return copy;
 	}
 	
 	// 비밀번호 확인
