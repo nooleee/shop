@@ -15,6 +15,12 @@ public class Cart {
 	}
 	
 	// 장바구니 삭제(모든 해당 아이템 삭제)
+	public void deleteItem(String name) {
+		for(Item item : list) {
+			if(item.getName().equals(name))
+				list.remove(item);
+		}
+	}
 	
 	// 수량 수정 (계산한 수량 받아서 바꿀만큼 +- 하기)
 	
