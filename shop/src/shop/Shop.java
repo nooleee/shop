@@ -29,7 +29,9 @@ public class Shop {
 		log = -1;
 	}
 	
-	
+	private boolean checkLog() {
+		return log == -1 ? true : false;
+	}
 	
 	private void printStatus() {
 		int UserSize = UserManager.getUserSize();
@@ -128,21 +130,30 @@ public class Shop {
 			System.out.println("회원 정보를 확인해주세요.");
 	}
 	
+	private void logout() {
+		log = -1;
+		System.out.println("로그아웃 되었습니다.");
+	}
+	
+	private void shopping() {
+		
+	}
+	
 	private void runSubUserMenu(int sel) {
 		if(sel < 0 || sel > 6)
 			return;
 		
-		if(sel == JOIN)
+		if(sel == JOIN && checkLog())
 			join();
-		else if(sel == LEAVE)
+		else if(sel == LEAVE && !checkLog())
 			leave();
-		else if(sel == LOGIN)
+		else if(sel == LOGIN && checkLog())
 			login();
-//		else if(sel == LOGOUT)
-//			ligout();
-//		else if(sel == SHOPPING)
-//			shopping();
-//		else if(sel == MYPAGE)
+		else if(sel == LOGOUT)
+			logout();
+		else if(sel == SHOPPING && !checkLog())
+			shopping();
+//		else if(sel == MYPAGE && !checkLog())
 //			myPage();
 //		else if(sel == BACK)
 //			return;
@@ -154,10 +165,11 @@ public class Shop {
 			showSubUserMenu();
 			int sel = inputNumber("선택");
 			runSubUserMenu(sel);
-			
+			break;
 		case ADMIN:
 		case FILE:
 		case EXIT:
+			isRun = false;
 		}
 	}
 	
