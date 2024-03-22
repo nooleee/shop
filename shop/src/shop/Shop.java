@@ -57,6 +57,11 @@ public class Shop {
 		return number;
 	}
 	
+	private String inputString(String messege) {
+		System.out.println(messege + " : ");
+		return scan.next();
+	}
+	
 	private void showSubUserMenu() {
 		System.out.println("------------");
 		System.out.println("1. 회원가입");
@@ -69,16 +74,16 @@ public class Shop {
 		System.out.println("------------");
 	}
 	
-//	private void join() {
-//		
-//	}
+	private void join() {
+		
+	}
 	
 	private void runSubUserMenu(int sel) {
 		if(sel < 0 || sel > 6)
 			return;
 		
 		if(sel == JOIN)
-//			join();
+			join();
 //		else if(sel == LEAVE)
 //			leave();
 //		else if(sel == LOGIN)
