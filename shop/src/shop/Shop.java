@@ -154,6 +154,12 @@ public class Shop {
 		}
 	}
 	
+	private void mypage() {
+		showMypageSubMenu();
+		int choice = inputNumber("선택");
+		runMypageSubMenu(choice);
+	}
+	
 	private void runSubUserMenu(int sel) {
 		if(sel < 0 || sel > 6)
 			return;
@@ -168,8 +174,8 @@ public class Shop {
 			logout();
 		else if(sel == SHOPPING && !checkLog())
 			shopping();
-//		else if(sel == MYPAGE && !checkLog())
-//			myPage();
+		else if(sel == MYPAGE && !checkLog())
+			mypage();
 //		else if(sel == BACK)
 //			return;
 	}
