@@ -22,7 +22,25 @@ public class Cart {
 		}
 	}
 	
-	// 수량 수정 (계산한 수량 받아서 바꿀만큼 +- 하기)
+	// 수량 수정 (계산한 수량 받아서 바꿀만큼 - 하기)
+	public void minusItemCount(int count, String name) {
+		int cnt = count;
+		while(cnt > 0) {
+			for(Item item : list) {
+				if(item.getName().equals(name)) {
+					list.remove(item);
+					break;
+				}
+			}
+			cnt--;
+		}
+	}
+	
+	// 수량 수정 (계산한 수량 받아서 바꿀만큼 + 하기)
+	public void plusItemCount(int count, String name) {
+		
+		
+	}
 	
 	// 수량 계산 (int값 반환 - count)
 	
