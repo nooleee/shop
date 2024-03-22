@@ -15,10 +15,15 @@ public class Cart {
 	}
 	
 	// 장바구니 삭제(모든 해당 아이템 삭제)
-	public void deleteItem(String name) {
-		for(Item item : list) {
-			if(item.getName().equals(name))
-				list.remove(item);
+	public void deleteItem(int code) {
+		int count = getItemCount(code);
+		while(count > 0) {
+			for(int i = 0; i < list.size(); i++) {
+				Item item = list.get(i);
+				if(item.getCode() == code)
+					list.remove(item);
+			}
+			count --;
 		}
 	}
 	
@@ -80,37 +85,6 @@ public class Cart {
 		}
 		System.out.println();
 	}
-	
-//	while (true) {
-//		for (int i = 0; i < itemCount; i++) {
-//			System.out.printf("%d) %s\n", i + 1, items[i]);
-//		}
-//		System.out.println("0)종료");
-//		
-//		System.out.print("아이템 번호 선택 : ");
-//		int itemNum = scan.nextInt();
-//
-//		if (itemNum == 0)
-//			break;
-//
-//		if (itemNum < 1 || itemNum > itemCount)
-//			continue;
-//
-//		// 구매이력을 jang에 기록
-//		int[][] tempJang = jang;
-//		jang = new int[jangCount + 1][];
-//
-//		for (int i = 0; i < jangCount; i++) {
-//			jang[i] = tempJang[i];
-//		}
-//
-//		jang[jangCount] = new int[2];
-//		jang[jangCount][0] = log;
-//		jang[jangCount][1] = itemNum;
-//
-//		jangCount++;
-//	}
-	
 	
 
 }
