@@ -47,6 +47,12 @@ public class ItemManager {
 		return new Item();
 	}
 	
+	// 아이템 정보
+	public Item getItemByCode(int index) {
+		Item item = list.get(index);
+		return item;
+	}
+	
 	// 아이템 인덱스 찾기(name)
 	public int getItemIndex(String name) {
 		int index = -1;
