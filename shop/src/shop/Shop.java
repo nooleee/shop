@@ -157,7 +157,17 @@ public class Shop {
 	private void mypage() {
 		showMypageSubMenu();
 		int choice = inputNumber("선택");
-		runMypageSubMenu(choice);
+//		runMypageSubMenu(choice);
+	}
+	
+	private void showMypageSubMenu() {
+		System.out.println("------------");
+		System.out.println("1. 장바구니");
+		System.out.println("2. 항목 삭제");
+		System.out.println("3. 수량 수정");
+		System.out.println("4. 결제");
+		System.out.println("0. 뒤로가기");
+		System.out.println("------------");
 	}
 	
 	private void runSubUserMenu(int sel) {
