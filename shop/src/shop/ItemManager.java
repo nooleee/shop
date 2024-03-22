@@ -1,6 +1,5 @@
 package shop;
 
-import java.util.ArrayList;
 import java.util.Vector;
 
 public class ItemManager {
@@ -48,15 +47,25 @@ public class ItemManager {
 		return new Item();
 	}
 	
-	// 아이템 인덱스 찾기
+	// 아이템 인덱스 찾기(name)
 	public int getItemIndex(String name) {
 		int index = -1;
 		for(Item item : list) {
 			if(item.getName().equals(name))
 				index = item.getCode();
 		}
-		
 		return index;
+	}
+	
+	// 아이템 이름 찾기(code)
+	public String getItemName(int code) {
+		String name = "";
+		
+		for(Item item : list) {
+			if(item.getCode() == code)
+				name = item.getName();
+		}
+		return name;
 	}
 	
 	// 아이템 리스트 확인
