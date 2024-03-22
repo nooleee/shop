@@ -94,10 +94,4 @@ public class UserManager {
 		return code;
 	}
 	
-	// 장바구니 담기
-	
-	// 장바구니 삭제
-	
-	// 장바구니 수정
-	
 }

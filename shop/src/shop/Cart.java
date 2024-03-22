@@ -31,7 +31,8 @@ public class Cart {
 	public void minusItemCount(int count, String name) {
 		int cnt = count;
 		while(cnt > 0) {
-			for(Item item : list) {
+			for(int i = 0; i < list.size(); i++) {
+				Item item = list.get(i);
 				if(item.getName().equals(name)) {
 					list.remove(item);
 					break;
@@ -44,9 +45,12 @@ public class Cart {
 	// 수량 수정 (계산한 수량 받아서 바꿀만큼 + 하기)
 	public void plusItemCount(int count, String name) {
 		int cnt = count;
-		
 		while(cnt > 0) {
 			Item item = getItemByName(name);
+			if(item.getName() == null) {
+				System.err.println("장바구니에 없는 항목입니다.");
+				break;
+			}
 			list.add(item);
 			cnt--;
 		}
@@ -84,6 +88,20 @@ public class Cart {
 				System.out.printf("[%s] : %d개\n", target.getName(), count);
 		}
 		System.out.println();
+	}
+	
+//	// 장바구니 아이템 개수
+//	public int cartItemCount() {
+//		int cnt = 0;
+//		for(Item item : list) {
+//			if(item.getCode() == cnt) 
+//				cnt++;
+//		}
+//		return cnt;
+//	}
+	
+	public int cartSize() {
+		return list.size();
 	}
 	
 

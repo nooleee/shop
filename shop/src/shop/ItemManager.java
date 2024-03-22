@@ -7,9 +7,9 @@ public class ItemManager {
 	
 	public ItemManager() {
 		list = new Vector<>();
-		list.add(new Item("사과", list.size()));
-		list.add(new Item("바나나", list.size()));
-		list.add(new Item("딸기", list.size()));
+		list.add(new Item("사과", list.size(), 500));
+		list.add(new Item("바나나", list.size(), 600));
+		list.add(new Item("딸기", list.size(), 1000));
 	}
 	
 	// 상품 등록
@@ -38,7 +38,7 @@ public class ItemManager {
 		return list.remove(taget);
 	}
 	
-	// 아이템 정보
+	// 아이템 정보 (name)
 	public Item getItemByName(String name) {
 		for(Item item : list) {
 			if(item.getName().equals(name))
@@ -47,7 +47,7 @@ public class ItemManager {
 		return new Item();
 	}
 	
-	// 아이템 정보
+	// 아이템 정보 (index)
 	public Item getItemByCode(int index) {
 		Item item = list.get(index);
 		return item;

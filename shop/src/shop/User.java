@@ -28,7 +28,7 @@ public class User {
 	}
 	
 	public Cart getCart() {
-		return cart;
+		return this.cart;
 	}
 	
 //	public void getCode(int code) {

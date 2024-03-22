@@ -28,6 +28,10 @@ public class Item {
 		return this.code;
 	}
 	
+	public int getPrice() {
+		return this.price;
+	}
+	
 	
 	public Item clone() {
 		return new Item(this.name, this.code);
