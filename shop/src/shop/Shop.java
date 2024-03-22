@@ -13,6 +13,14 @@ public class Shop {
 	private final int FILE = 3;
 	private final int EXIT = 0;
 	
+	private final int JOIN = 1;
+	private final int LEAVE = 2;
+	private final int LOGIN = 3;
+	private final int LOGOUT = 4;
+	private final int SHOPPING = 5;
+	private final int MYPAGE = 6;
+	private final int BACK = 0;
+	
 	public Shop(String name) {
 		this.isRun = true;
 	}
@@ -61,11 +69,36 @@ public class Shop {
 		System.out.println("------------");
 	}
 	
+	private void join() {
+		
+	}
+	
+	private void runSubUserMenu(int sel) {
+		if(sel < 0 || sel > 6)
+			return;
+		
+		if(sel == JOIN)
+			join();
+//		else if(sel == LEAVE)
+//			leave();
+//		else if(sel == LOGIN)
+//			login();
+//		else if(sel == LOGOUT)
+//			ligout();
+//		else if(sel == SHOPPING)
+//			shopping();
+//		else if(sel == MYPAGE)
+//			myPage();
+//		else if(sel == BACK)
+//			return;
+	}
+	
 	private void runMenu(int select) {
 		switch (select) {
 		case USER:
 			showSubUserMenu();
 			int sel = inputNumber("선택");
+			runSubUserMenu(sel);
 			
 		case ADMIN:
 		case FILE:
