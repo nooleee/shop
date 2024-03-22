@@ -38,6 +38,7 @@ public class Shop {
 
 		System.out.println("------------");
 		System.out.println(status);
+		System.out.println("log : " + log);
 	}
 	
 	private void showMenus() {
@@ -108,6 +109,25 @@ public class Shop {
 			System.err.println("비밀번호를 다시 확인하세요.");
 	}
 	
+	private void login() {
+		String id = inputString("id");
+		String password = inputString("password");
+		int code = 0;
+		
+		for(User user : UserManager.findUserAll()) {
+			if(user.getId().equals(id) && user.getPassword().equals(password)) {
+				code = user.getCode();
+			}
+		}
+		
+		if(code != 0) {
+			log = code;
+			System.out.println("로그인 완료");
+		}
+		else
+			System.out.println("회원 정보를 확인해주세요.");
+	}
+	
 	private void runSubUserMenu(int sel) {
 		if(sel < 0 || sel > 6)
 			return;
@@ -116,8 +136,8 @@ public class Shop {
 			join();
 		else if(sel == LEAVE)
 			leave();
-//		else if(sel == LOGIN)
-//			login();
+		else if(sel == LOGIN)
+			login();
 //		else if(sel == LOGOUT)
 //			ligout();
 //		else if(sel == SHOPPING)
