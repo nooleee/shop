@@ -12,6 +12,7 @@ public class User {
 		this.id = id;
 		this.password = password;
 		this.code = code;
+		cart = new Cart();
 	}
 	
 	public String getId() {

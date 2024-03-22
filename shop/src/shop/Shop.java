@@ -1,6 +1,7 @@
 package shop;
 
 import java.util.Scanner;
+import java.util.Vector;
 
 
 public class Shop {
@@ -141,16 +142,23 @@ public class Shop {
 	}
 	
 	private void shopping() {
-		printItemAll();
-		int choice = inputNumber("선택")-1;
-		
-		if(choice < 1 || choice > ItemManager.getItemSize()) {
-			System.out.println("아이템 번호를 다시 확인하세요.");
-			return;
+		while(true) {
+			printItemAll();
+			System.out.println("0) 종료");
+			int choice = inputNumber("선택")-1;
+			
+			if(choice == 0)
+				break;
+			
+			if(choice < 0 || choice > ItemManager.getItemSize()) {
+				System.out.println("아이템 번호를 다시 확인하세요.");
+				return;
+			}
+			String name = ItemManager.getItemName(choice);
+			Cart cart = UserManager.getUserByUserCode(log).getCart();
+			cart.addItem(name, choice);
+			
 		}
-		String name = ItemManager.getItemName(choice);
-		Cart cart = UserManager.getUserByUserCode(log).getCart();
-		cart.addItem(name, choice);
 	}
 	
 	private void printItemAll() {
@@ -176,7 +184,10 @@ public class Shop {
 	}
 	
 	private void viewCart() {
+		Vector<Item> items = ItemManager.findItemAll();
+		User user = UserManager.getUserByUserCode(log);
 		
+		user.getCart().printCartAll(items);
 	}
 	
 	private void runMypageSubMenu(int choice) {

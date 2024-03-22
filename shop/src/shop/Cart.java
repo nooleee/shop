@@ -76,8 +76,9 @@ public class Cart {
 				count = getItemCount(code);
 			}
 			if(count != 0)
-				System.out.printf("[%s] : %d개", target.getName(), count);
+				System.out.printf("[%s] : %d개\n", target.getName(), count);
 		}
+		System.out.println();
 	}
 	
 //	while (true) {
