@@ -374,6 +374,11 @@ public class Shop {
 		System.out.println("아이템 가격 수정 완료");
 	}
 	
+	private void searchTotalPrice() {
+		User admin = UserManager.getUserByUserCode(ADMINCODE);
+		System.out.printf("현재까지 총 매출 : %d원\n", admin.getTotal());
+	}
+	
 	private void runAdminMenu(int choice) {
 		if(choice < 0 || choice > 4) 
 			return;
@@ -383,7 +388,8 @@ public class Shop {
 //		else if(choice == DELETE_ITEMS)
 		else if(choice == MODIFY_PRICE)
 			modifyPrice();
-//		else if(choice == SEARCH_TOTAL_PRICE)
+		else if(choice == SEARCH_TOTAL_PRICE)
+			searchTotalPrice();
 		else if(choice == BACK)
 			return;
 	}

@@ -13,9 +13,9 @@ public class ItemManager {
 	}
 	
 	// 상품 등록
-	public Item addItem(String name) {
+	public Item addItem(String name, int price) {
 		if(!findItemByName(name)) {
-			Item item = new Item(name, list.size());
+			Item item = new Item(name, list.size(), price);
 			list.add(item);
 			return item.clone();
 		}

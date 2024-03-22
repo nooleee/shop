@@ -28,6 +28,10 @@ public class User {
 		return this.code;
 	}
 	
+	public int getTotal() {
+		return this.total;
+	}
+	
 	public Cart getCart() {
 		return this.cart;
 	}
