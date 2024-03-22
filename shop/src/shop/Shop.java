@@ -28,7 +28,7 @@ public class Shop {
 	private final int VIEW_CART = 1;
 	private final int DELETE_ITEM = 2;
 	private final int MODIFY_ITEM = 3;
-//	private final int VIEW_CART = 4;
+	private final int PAYMENT = 4;
 	
 	public Shop(String name) {
 		this.isRun = true;
@@ -215,8 +215,25 @@ public class Shop {
 		
 		if(sel == 1)
 			plus();
-//		else if(sel == 2)
-//			minus();
+		else if(sel == 2)
+			minus();
+	}
+	
+	private void minus() {
+		User user = UserManager.getUserByUserCode(log);
+		printItemAll();
+		
+		int code = inputNumber("원하는 항목")-1;
+		
+		if(code < 0 || code >= ItemManager.getItemSize()) {
+			System.err.println("장바구니에 없는 항목입니다.");
+			return;
+		}
+		
+		String name = ItemManager.getItemName(code);
+		int count = inputNumber("원하는 수량");
+		
+		user.getCart().minusItemCount(count, name);
 	}
 	
 	private void plus() {
@@ -224,6 +241,11 @@ public class Shop {
 		
 		printItemAll();
 		int code = inputNumber("원하는 항목")-1;
+		if(code < 0 || code > user.getCart().cartSize()) {
+			System.err.println("아이템 목록에 없는 항목입니다.");
+			return;
+		}
+		
 		String name = ItemManager.getItemName(code);
 		int count = inputNumber("원하는 수량");
 		
@@ -233,6 +255,10 @@ public class Shop {
 	private void showModifySubMenu() {
 		System.out.println("1)추가");
 		System.out.println("2)삭제");
+	}
+	
+	private void payMent() {
+		
 	}
 	
 	private void runMypageSubMenu(int choice) {
@@ -245,9 +271,10 @@ public class Shop {
 			deleteItem();
 		else if(choice == MODIFY_ITEM)
 			modifyItemCount();
-//		else if(choice == DELETE_ITEM)
-//		else if(choice == BACK)
-//			return;
+		else if(choice == PAYMENT)
+			payMent();
+		else if(choice == BACK)
+			return;
 	}
 	
 	private void runSubUserMenu(int sel) {
