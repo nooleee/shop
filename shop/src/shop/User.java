@@ -4,6 +4,7 @@ public class User {
 	private String id, password;
 	private int code;
 	private Cart cart;
+	private int total;
 	
 	public User() {
 	}
@@ -29,6 +30,10 @@ public class User {
 	
 	public Cart getCart() {
 		return this.cart;
+	}
+	
+	public void setTotal(int price) {
+		total += price;
 	}
 	
 //	public void getCode(int code) {
