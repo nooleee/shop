@@ -2,6 +2,7 @@ package shop;
 
 import java.util.Scanner;
 
+
 public class Shop {
 	private Scanner scan = new Scanner(System.in);
 	private UserManager UserManager = new UserManager();
@@ -75,7 +76,19 @@ public class Shop {
 	}
 	
 	private void join() {
+		String id = inputString("id");
+		String password = inputString("password");
 		
+		if(!UserManager.findUserByUserId(id)) {
+			User user = UserManager.createUser(id, password);
+			printWelcomeMessage(user);
+		}
+	}
+	
+	private void printWelcomeMessage(User User) {
+		String message = User.getCode() != 0 ? String.format("%s(%d) 회원님 환영합니다.", User.getId(), User.getCode())
+				: "회원가입 실패";
+		System.out.println(message);
 	}
 	
 	private void runSubUserMenu(int sel) {
