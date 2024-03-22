@@ -334,6 +334,16 @@ public class Shop {
 		return isAdmin;
 	}
 	
+	private void showAdminMenu() {
+		System.out.println("------------");
+		System.out.println("1. 아이템 등록");
+		System.out.println("2. 아이템 삭제");
+		System.out.println("3. 아이템 가격 수정");
+		System.out.println("4. 총 매출 조회");
+		System.out.println("0. 뒤로가기");
+		System.out.println("------------");
+	}
+	
 	private void runMenu(int select) {
 		switch (select) {
 		case USER:
@@ -343,7 +353,7 @@ public class Shop {
 			break;
 		case ADMIN:
 			if(!checkLog() && checkAdminCode()) {
-//				showAdminMenu();
+				showAdminMenu();
 			}
 			break;
 		case FILE:
