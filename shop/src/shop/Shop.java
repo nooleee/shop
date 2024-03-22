@@ -136,7 +136,13 @@ public class Shop {
 	}
 	
 	private void shopping() {
-		
+		printItemAll();
+	}
+	
+	private void printItemAll() {
+		for(Item item : ItemManager.findItemAll()) {
+			System.out.printf("%d) %s\n", item.getCode() + 1, item.getName());
+		}
 	}
 	
 	private void runSubUserMenu(int sel) {
