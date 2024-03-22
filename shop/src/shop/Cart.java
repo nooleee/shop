@@ -66,7 +66,19 @@ public class Cart {
 		return count;
 	}
 	
-	// 
+	// 장바구니 보여주기
+	public void printCartAll(Vector<Item> items) {
+		for(int i = 0; i < items.size(); i++) {
+			Item target = items.get(i);
+			int count = 0;
+			for(Item item : list) {
+				int code = target.getCode();
+				count = getItemCount(code);
+			}
+			if(count != 0)
+				System.out.printf("[%s] : %d개", target.getName(), count);
+		}
+	}
 	
 //	while (true) {
 //		for (int i = 0; i < itemCount; i++) {
