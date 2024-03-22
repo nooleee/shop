@@ -9,6 +9,8 @@ public class Shop {
 	private ItemManager ItemManager = new ItemManager();
 	private boolean isRun;
 	
+	private int log;
+	
 	private final int USER = 1;
 	private final int ADMIN = 2;
 	private final int FILE = 3;
@@ -24,6 +26,7 @@ public class Shop {
 	
 	public Shop(String name) {
 		this.isRun = true;
+		log = -1;
 	}
 	
 	
@@ -83,6 +86,8 @@ public class Shop {
 			User user = UserManager.createUser(id, password);
 			printWelcomeMessage(user);
 		}
+		else
+			System.err.println("이미 등록된 아이디 입니다.");
 	}
 	
 	private void printWelcomeMessage(User User) {
@@ -91,14 +96,21 @@ public class Shop {
 		System.out.println(message);
 	}
 	
+	private void leave() {
+		String password = inputString("비밀번호 확인");
+		if(UserManager.findUserByPassword(password)) {
+			
+		}
+	}
+	
 	private void runSubUserMenu(int sel) {
 		if(sel < 0 || sel > 6)
 			return;
 		
 		if(sel == JOIN)
 			join();
-//		else if(sel == LEAVE)
-//			leave();
+		else if(sel == LEAVE)
+			leave();
 //		else if(sel == LOGIN)
 //			login();
 //		else if(sel == LOGOUT)
