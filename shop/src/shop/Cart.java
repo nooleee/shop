@@ -57,6 +57,14 @@ public class Cart {
 	}
 	
 	// 수량 계산 (int값 반환 - count)
+	public int getItemCount(int code) {
+		int count = 0;
+		for(Item item : list) {
+			if(item.getCode() == code)
+				count++;
+		}
+		return count;
+	}
 	
 	// 
 	
