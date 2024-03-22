@@ -75,12 +75,13 @@ public class UserManager {
 	}
 	
 	// 비밀번호 확인
-	public boolean findUserByPassword(String password) {
+	public int findUserByPassword(String password) {
+		int code = 0;
 		for(User user : list) {
 			if(user.getPassword().equals(password))
-				return true;
+				return code = user.getCode();
 		}
-		return false;
+		return code;
 	}
 	
 	// 장바구니 담기
