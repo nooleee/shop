@@ -24,6 +24,11 @@ public class Shop {
 	private final int MYPAGE = 6;
 	private final int BACK = 0;
 	
+	private final int VIEW_CART = 1;
+	private final int DELETE_ITEM = 2;
+	private final int MODIFY_ITEM = 3;
+//	private final int VIEW_CART = 4;
+	
 	public Shop(String name) {
 		this.isRun = true;
 		log = -1;
@@ -157,7 +162,7 @@ public class Shop {
 	private void mypage() {
 		showMypageSubMenu();
 		int choice = inputNumber("선택");
-//		runMypageSubMenu(choice);
+		runMypageSubMenu(choice);
 	}
 	
 	private void showMypageSubMenu() {
@@ -168,6 +173,25 @@ public class Shop {
 		System.out.println("4. 결제");
 		System.out.println("0. 뒤로가기");
 		System.out.println("------------");
+	}
+	
+	private void viewCart() {
+		
+	}
+	
+	private void runMypageSubMenu(int choice) {
+		if(choice < 0 || choice > 4)
+			return;
+		
+		if(choice == VIEW_CART)
+			viewCart();
+//		else if(choice == DELETE_ITEM)
+//			deleteItem();
+//		else if(choice == MODIFY_ITEM)
+//			modifyItemCount();
+//		else if(choice == DELETE_ITEM)
+//		else if(choice == BACK)
+//			return;
 	}
 	
 	private void runSubUserMenu(int sel) {
@@ -186,8 +210,8 @@ public class Shop {
 			shopping();
 		else if(sel == MYPAGE && !checkLog())
 			mypage();
-//		else if(sel == BACK)
-//			return;
+		else if(sel == BACK)
+			return;
 	}
 	
 	private void runMenu(int select) {
