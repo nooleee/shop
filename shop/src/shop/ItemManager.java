@@ -1,5 +1,6 @@
 package shop;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class ItemManager {
@@ -56,6 +57,15 @@ public class ItemManager {
 		}
 		
 		return index;
+	}
+	
+	// 아이템 리스트 확인
+	public Vector<Item> findItemAll() {
+		Vector<Item> copy = new Vector<>();
+		for(Item item : list) {
+			copy.add(item.clone());
+		}
+		return copy;
 	}
 	
 	// 아이템 수정
