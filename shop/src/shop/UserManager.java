@@ -74,6 +74,15 @@ public class UserManager {
 		return new User();
 	}
 	
+	// 비밀번호 확인
+	public boolean findUserByPassword(String password) {
+		for(User user : list) {
+			if(user.getPassword().equals(password))
+				return true;
+		}
+		return false;
+	}
+	
 	// 장바구니 담기
 	
 	// 장바구니 삭제
