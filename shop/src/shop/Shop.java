@@ -364,6 +364,16 @@ public class Shop {
 		System.out.println(message);
 	}
 	
+	private void modifyPrice() {
+		printItemAll();
+		int code = inputNumber("아이템 선택")-1;
+		String name = ItemManager.getItemName(code);
+		
+		int newPrice = inputNumber("수정을 원하는 가격");
+		ItemManager.replaceItem(name, newPrice);
+		System.out.println("아이템 가격 수정 완료");
+	}
+	
 	private void runAdminMenu(int choice) {
 		if(choice < 0 || choice > 4) 
 			return;
@@ -371,7 +381,8 @@ public class Shop {
 		if(choice == ADD_ITEM)
 			addItem();
 //		else if(choice == DELETE_ITEMS)
-//		else if(choice == MODIFY_PRICE)
+		else if(choice == MODIFY_PRICE)
+			modifyPrice();
 //		else if(choice == SEARCH_TOTAL_PRICE)
 		else if(choice == BACK)
 			return;
