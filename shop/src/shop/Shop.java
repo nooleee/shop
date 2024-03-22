@@ -31,6 +31,11 @@ public class Shop {
 	private final int MODIFY_ITEM = 3;
 	private final int PAYMENT = 4;
 	
+	private final int ADD_ITEM = 1;
+	private final int DELETE_ITEMS = 2;
+	private final int MODIFY_PRICE = 3;
+	private final int SEARCH_TOTAL_PRICE = 4;
+	
 	public Shop(String name) {
 		this.isRun = true;
 		log = -1;
@@ -344,6 +349,34 @@ public class Shop {
 		System.out.println("------------");
 	}
 	
+	private void addItem() {
+		String name = inputString("등록할 아이템");
+		int price = inputNumber("가격");
+		
+		if(!ItemManager.findItemByName(name)) {
+			Item item = ItemManager.addItem(name, price);
+			printAddMessege(item);
+		}
+	}
+	
+	private void printAddMessege(Item item) {
+		String message = String.format("%s(%d)이 등록되었습니다.", item.getName(), item.getPrice());
+		System.out.println(message);
+	}
+	
+	private void runAdminMenu(int choice) {
+		if(choice < 0 || choice > 4) 
+			return;
+		
+		if(choice == ADD_ITEM)
+			addItem();
+//		else if(choice == DELETE_ITEMS)
+//		else if(choice == MODIFY_PRICE)
+//		else if(choice == SEARCH_TOTAL_PRICE)
+		else if(choice == BACK)
+			return;
+	}
+	
 	private void runMenu(int select) {
 		switch (select) {
 		case USER:
@@ -354,6 +387,8 @@ public class Shop {
 		case ADMIN:
 			if(!checkLog() && checkAdminCode()) {
 				showAdminMenu();
+				int choice = inputNumber("선택");
+				runAdminMenu(choice);
 			}
 			break;
 		case FILE:
