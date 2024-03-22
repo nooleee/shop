@@ -145,18 +145,18 @@ public class Shop {
 		while(true) {
 			printItemAll();
 			System.out.println("0) 종료");
-			int choice = inputNumber("선택")-1;
+			int choice = inputNumber("선택");
 			
 			if(choice == 0)
 				break;
 			
-			if(choice < 0 || choice > ItemManager.getItemSize()) {
+			if(choice < 1 || choice > ItemManager.getItemSize()) {
 				System.out.println("아이템 번호를 다시 확인하세요.");
-				return;
+				continue;
 			}
-			String name = ItemManager.getItemName(choice);
+			String name = ItemManager.getItemName(choice-1);
 			Cart cart = UserManager.getUserByUserCode(log).getCart();
-			cart.addItem(name, choice);
+			cart.addItem(name, choice-1);
 			
 		}
 	}
