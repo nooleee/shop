@@ -379,13 +379,24 @@ public class Shop {
 		System.out.printf("현재까지 총 매출 : %d원\n", admin.getTotal());
 	}
 	
+	private void deleteItems() {
+		printItemAll();
+		int code = inputNumber("삭제를 원하는 아이템 선택")-1;
+		String name = ItemManager.getItemName(code);
+		
+		Item item = ItemManager.getItemByName(name);
+		ItemManager.deleteItem(item);
+		UserManager.deleteItemAll(name);
+	}
+	
 	private void runAdminMenu(int choice) {
 		if(choice < 0 || choice > 4) 
 			return;
 		
 		if(choice == ADD_ITEM)
 			addItem();
-//		else if(choice == DELETE_ITEMS)
+		else if(choice == DELETE_ITEMS)
+			deleteItems();
 		else if(choice == MODIFY_PRICE)
 			modifyPrice();
 		else if(choice == SEARCH_TOTAL_PRICE)
