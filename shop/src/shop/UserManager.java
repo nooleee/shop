@@ -75,6 +75,15 @@ public class UserManager {
 		return new User();
 	}
 	
+	// 아이템 전부 삭제
+	public void deleteItemAll(String item) {
+		for(User user : list) {
+			Cart cart = user.getCart();
+			int target = cart.getItemByName(item).getCode();
+			cart.deleteItem(target);
+		}
+	}
+	
 	// 유저 리스트 확인
 	public ArrayList<User> findUserAll() {
 		ArrayList<User> copy = new ArrayList<>();
