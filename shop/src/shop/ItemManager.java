@@ -12,6 +12,7 @@ public class ItemManager {
 		list.add(new Item("딸기", list.size(), 1000));
 	}
 	
+	
 	// 상품 등록
 	public Item addItem(String name, int price) {
 		if(!findItemByName(name)) {
@@ -47,6 +48,7 @@ public class ItemManager {
 		return new Item();
 	}
 	
+	
 	// 아이템 정보 (index)
 	public Item getItemByCode(int index) {
 		Item item = list.get(index);
@@ -81,6 +83,11 @@ public class ItemManager {
 			copy.add(item.clone());
 		}
 		return copy;
+	}
+	
+	// 아이템 리스트 리셋
+	public void resetList() {
+		list.clear();
 	}
 	
 	// 아이템 수정
