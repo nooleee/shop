@@ -16,6 +16,14 @@ public class User {
 		cart = new Cart();
 	}
 	
+	public User(String id, String password, int code, int total, Cart cart) {
+		this.id = id;
+		this.password = password;
+		this.code = code;
+		this.total = total;
+		this.cart = cart;
+	}
+	
 	public String getId() {
 		return this.id;
 	}
@@ -45,6 +53,6 @@ public class User {
 //	}
 	
 	public User clone() {
-		return new User(this.id, this.password, this.code);
+		return new User(this.id, this.password, this.code, this.total, this.cart);
 	}
 }
