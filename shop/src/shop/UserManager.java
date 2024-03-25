@@ -93,6 +93,11 @@ public class UserManager {
 		return copy;
 	}
 	
+	// 유저 리스트 리셋
+	public void resetList() {
+		list.clear();
+	}
+	
 	// 비밀번호 확인
 	public int findUserByPassword(String password) {
 		int code = 0;
