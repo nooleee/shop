@@ -1,5 +1,6 @@
 package shop;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -8,6 +9,7 @@ public class Shop {
 	private Scanner scan = new Scanner(System.in);
 	private UserManager UserManager = new UserManager();
 	private ItemManager ItemManager = new ItemManager();
+	private FileManager FileManager = new FileManager();
 	private boolean isRun;
 	
 	private int log;
@@ -35,6 +37,9 @@ public class Shop {
 	private final int DELETE_ITEMS = 2;
 	private final int MODIFY_PRICE = 3;
 	private final int SEARCH_TOTAL_PRICE = 4;
+	
+	private final int SAVE_DATA = 1;
+	private final int LOAD_DATA = 2;
 	
 	public Shop(String name) {
 		this.isRun = true;
@@ -367,6 +372,10 @@ public class Shop {
 	private void modifyPrice() {
 		printItemAll();
 		int code = inputNumber("아이템 선택")-1;
+		
+		if( code < 0 || code > ItemManager.getItemSize())
+			return;
+		
 		String name = ItemManager.getItemName(code);
 		
 		int newPrice = inputNumber("수정을 원하는 가격");
@@ -382,6 +391,10 @@ public class Shop {
 	private void deleteItems() {
 		printItemAll();
 		int code = inputNumber("삭제를 원하는 아이템 선택")-1;
+		
+		if( code < 0 || code > ItemManager.getItemSize())
+			return;
+		
 		String name = ItemManager.getItemName(code);
 		
 		Item item = ItemManager.getItemByName(name);
@@ -405,6 +418,31 @@ public class Shop {
 			return;
 	}
 	
+	private void showSubFileMenu() {
+		System.out.println("1. 저장");
+		System.out.println("2. 로드");
+		System.out.println("0. 뒤로가기");
+	}
+	
+	private void saveData() {
+		Vector<Item> item = ItemManager.findItemAll();
+		ArrayList<User> user = UserManager.findUserAll();
+		
+		FileManager.saveData(user, item);
+	}
+	
+	private void runSubFileMenu(int choice) {
+		if(choice < 0 || choice > 2) 
+			return;
+		
+		if(choice == SAVE_DATA)
+			saveData();
+//		else if(choice == LOAD_DATA)
+//			loadData();
+		else if(choice == BACK)
+			return;
+	}
+	
 	private void runMenu(int select) {
 		switch (select) {
 		case USER:
@@ -420,6 +458,9 @@ public class Shop {
 			}
 			break;
 		case FILE:
+			showSubFileMenu();
+			int choice = inputNumber("선택");
+			runSubFileMenu(choice);
 		case EXIT:
 			isRun = false;
 		}
